@@ -1,0 +1,29 @@
+{
+  "name": "grean-lead-5.0-beta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "Echo 1-2--3",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-K-Developer/Grean-Lead-5.0-Beta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A-K-Developer/Grean-Lead-5.0-Beta/issues"
+  },
+  "homepage": "https://github.com/A-K-Developer/Grean-Lead-5.0-Beta#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "firebase": "^9.15.0"
+  }
+}
