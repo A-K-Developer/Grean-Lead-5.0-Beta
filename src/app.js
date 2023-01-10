@@ -22,6 +22,7 @@ let span = spanReplace.querySelector('span');
 
 let rightNav = document.getElementById('rightNav')
 let bckImg = document.getElementById('backgroundImg2');
+let box = '';
 
 arrows[1].addEventListener('click', (e) => {
 
@@ -89,10 +90,9 @@ window.addEventListener('wheel', (e) => {
 
         headingg.textContent = '';
         paragraphh.textContent = ''
-        bckImg.src = '../img/background3.jpg';
     }
-    if(window.pageYOffset > 2000){
-       
+    if (window.pageYOffset > 2000) {
+
         spanReplace.replaceWith(dots)
         dots.style.zIndex = 33
         contact.classList.add('active')
@@ -102,25 +102,47 @@ window.addEventListener('wheel', (e) => {
 let videos = document.getElementById('video');
 let dot1 = document.querySelector('.dot1')
 let dot2 = document.querySelector('.dot2')
+let lampCont = document.getElementById('lampEle')
+let eleContainer = document.getElementById('elements');
+let earthCon = document.getElementById('earthEle')
+lampCont.remove();
+earthCon.remove()
 
-dots.firstElementChild.addEventListener('click',() => {
-    let dot1Res = dot1;
-    dot1.replaceWith(dot2);
-    dots.appendChild(dot1Res)
-    videos.setAttribute('src',"https://firebasestorage.googleapis.com/v0/b/greanlead5.appspot.com/o/interview1.mp4?alt=media&token=250b13df-867b-4825-a206-55df7d6b1868");
+dots.firstElementChild.addEventListener('click', () => {
+    videos.setAttribute('src', "https://firebasestorage.googleapis.com/v0/b/greanlead5.appspot.com/o/interview1.mp4?alt=media&token=250b13df-867b-4825-a206-55df7d6b1868");
+   changeClass(dot1, dot2);
+    eleContainer.appendChild(lampCont)
+    earthCon.remove()
+    videos.play();
 
 })
-dots.lastElementChild.addEventListener('click',() => {
-    let dot2Res = dot2;
-    dot2.replaceWith(dot1);
-    dots.appendChild(dot2Res)
+dots.lastElementChild.addEventListener('click', () => {
     videos.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/greanlead5.appspot.com/o/Interview2.mp4?alt=media&token=a9b86c3b-abfc-42dc-8fa2-f37f67024940')
+    changeClass(dot2, dot1);
+    eleContainer.appendChild(earthCon)
+    lampCont.remove()
+    videos.play();
 })
+
+function changeClass(arg,arg1){
+    let argClass = arg.classList ;
+    if(argClass[0] !== 'dot1'){
+        let insideCircle = arg1.firstElementChild;
+        arg.appendChild(insideCircle);
+        arg1.classList.remove('dot1');
+        arg.classList.add('dot1')
+        arg.classList.remove('dot2')
+        arg1.classList.add('dot2');
+    }
+}
 let navLinks = document.querySelectorAll('.navLinks');
 
 for (let i = 0; i < navLinks.length; i++) {
     if (i == 0) {
         navLinks[i].addEventListener('click', () => {
+
+            
+
             span.textContent = '01 /'
 
             makeMeActive(navLinks[i], navLinks[i + 1], navLinks[i + 2])
@@ -130,6 +152,14 @@ for (let i = 0; i < navLinks.length; i++) {
  
             GreenLead have therefore developed a series of dialogue promoting workshops for the heads of company and technical staff in supply companies that will help with developing and clarifying the employee roles and procedures of the green transition of said supply company.
             `)
+            let context = document.querySelector('.context');
+            box = document.querySelector('.paragrapf');
+            box.addEventListener('click', (e) => {
+
+                if (e.target == box) {
+                    console.log('clicked');
+                }
+            })
         })
     } else if (i == 1) {
         navLinks[i].addEventListener('click', () => {
@@ -169,6 +199,9 @@ function animateEl(ele, classToAdd, remove) {
 }
 
 function makeMeActive(el, prevEl, nextEl) {
+
+
+
     if (el.classList.contains('black')) {
         el.classList.remove('black');
     }
@@ -190,6 +223,13 @@ function makeMeActive(el, prevEl, nextEl) {
     nextEl.lastElementChild.src = "../img/rightArrow.png"
 
 }
+window.addEventListener('click', (e) => {
+    if (e.target != box) {
+        console.log(navLinks);
+
+        console.log(e.target);
+    }
+})
 
 function changeContext(text) {
     let context = document.querySelector('.context');
@@ -201,4 +241,68 @@ function changeContext(text) {
     paragraphh.classList.add('paragrapf')
     paragraphh.style.zIndex = 6;
     paragraphh.textContent = text;
+
+
+
+}
+let section = document.getElementsByTagName('main')[0];
+let body = document.getElementsByTagName('body')[0]
+if (screen.width < 800) {
+    section.style.display = 'none';
+    let verticalDevice = createElement('div', body, 'verticalDevice', '', '', '', '', '')
+    createElement('p', verticalDevice, '', '', '', '', '', `Hi.`)
+    createElement('p', verticalDevice, '', '', '', '', '', `For a better experience,please, turn your device horizontally.`)
+    let imgContainer = createElement('div', verticalDevice, 'imgContainer', '', '', '', '', '')
+    createElement('img', imgContainer, '', ['src', '../img/mobile.png', 'alt', 'deviceImg'], '', ['phone', 'phoneX'], '', '')
+    createElement('img', imgContainer, '', ['src', '../img/1.png', 'alt', 'deviceImg'], '', ['phone', 'phoneY'], '', '')
+}
+
+function createElement(type, parent, id, attributeArr,
+    eventListenerArr, classArr, action, context, ) {
+    if (action == 'printOnce') {
+        return;
+    }
+
+    let container = document.createElement(type);
+
+    if (type == 'button') {
+        container.setAttribute('type', 'button')
+    }
+
+    if (context !== '') {
+        container.textContent = context;
+    }
+    if (id !== '') {
+        container.id = id;
+    }
+    while (attributeArr.length > 1) {
+        let href = attributeArr.shift();
+        let path = attributeArr.shift();
+
+        if (href !== undefined && path !== undefined) {
+            container.setAttribute(href, path)
+        }
+    }
+
+    while (classArr.length > 0 && classArr !== '') {
+        container.classList.add(classArr.shift())
+    }
+
+    if (eventListenerArr !== '') {
+        let event = eventListenerArr.shift();
+
+        while (eventListenerArr.length > 0) {
+            container.addEventListener(event, eventListenerArr[0]);
+            eventListenerArr.shift();
+        }
+    }
+
+    if (action == 'push') {
+        parent.push(container)
+    } else {
+
+        parent.appendChild(container)
+    }
+
+    return container
 }
