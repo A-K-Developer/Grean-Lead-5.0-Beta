@@ -306,3 +306,19 @@ function createElement(type, parent, id, attributeArr,
 
     return container
 }
+
+let btn = document.getElementsByClassName('btn')[0];
+btn.addEventListener('click', portfolio)
+
+function portfolio() {
+    window.location.href = 'https://www.greenlead.dk/'
+   
+}
+let emailIcon = document.getElementsByClassName('gmailIcon')[0];
+emailIcon.addEventListener('click', () => {
+    window.location.href = 'mailto:info@GreenLead.dk'
+})
+let linkedIn = document.getElementsByClassName('linkedIn')[0];
+linkedIn.addEventListener('click', () => {
+    window.location.href = 'https://www.linkedin.com/company/greenlead-dk/'
+})
