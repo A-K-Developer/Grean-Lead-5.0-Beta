@@ -69,6 +69,7 @@ window.addEventListener('wheel', (e) => {
     if (window.pageYOffset > 650) {
         animateEl(smallNav, 'animate__fadeInRight')
         smallNav.style.display = 'flex';
+        aboutUs.classList.remove('notActive')
         aboutUs.classList.add('active')
         workshop.classList.add('notActive')
         contact.classList.add('notActive')
@@ -97,6 +98,12 @@ window.addEventListener('wheel', (e) => {
         dots.style.zIndex = 33
         contact.classList.add('active')
 
+    }
+    if(window.pageYOffset > 3700){
+        aboutUs.classList.add('notActive')
+        workshop.classList.add('notActive')
+        contact.classList.add('active')
+        contact.classList.remove('notActive')
     }
 })
 let videos = document.getElementById('video');

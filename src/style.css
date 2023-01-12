@@ -689,6 +689,7 @@
 }
 #formExample h1{
     color: var(--fontColor);
+    margin-bottom: 50px;
 }
 .add{
     display: flex;
@@ -703,6 +704,8 @@ input{
     border-bottom-color: #fff;
     border-bottom-width: 1px;
     padding: 10px;
+    color: #fff;
+
 }
 textarea{
     background-color: transparent;
@@ -710,6 +713,7 @@ textarea{
     border-bottom-color: #fff;
     border-bottom-width: 1px;
     padding: 10px;
+    color: #fff;
 
 }
 .sendBtn{
